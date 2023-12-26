@@ -10,7 +10,7 @@ services:
       - '--providers.docker.network=make-my-server_srv'
       # Entrypoints
       - '--entrypoints.web.address=:${TRAEFIK_WEB_ENTRYPOINT:-80}'
-      - '--entrypoints.web.http.redirections.entrypoint.to=websecure'
+      #- '--entrypoints.web.http.redirections.entrypoint.to=websecure'
       - '--entrypoints.websecure.address=:${TRAEFIK_WEBSECURE_ENTRYPOINT:-443}'
       # Let's Encrypt
       #- '--certificatesresolvers.myresolver.acme.email=${ROOT_EMAIL:-changeme@changeme.org}'
@@ -60,3 +60,4 @@ services:
       - '/var/run/docker.sock:/var/run/docker.sock'
       - './logs:/logs'
       - './dynamic_conf:/dynamic_conf'
+      - './certs:/certs'
