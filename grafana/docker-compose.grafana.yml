@@ -3,9 +3,6 @@ version: '3.9'
 services:
   alertmanager:
     image: 'prom/alertmanager:${ALERTMANAGER_IMAGE_VERSION:-v0.21.0}'
-    healthcheck:
-      test: ['CMD',
-             'wget', '-q', '--spider', '--proxy=off', 'localhost:9092/metrics']
     labels:
       traefik.enable: true
       traefik.http.routers.alertmanager.middlewares: 'basic_auth@docker'
@@ -49,9 +46,6 @@ services:
       GF_INSTALL_PLUGINS: 'grafana-piechart-panel'
       GF_METRICS_ENABLED: 'true'
       GF_USERS_ALLOW_SIGN_UP: 'false'
-    healthcheck:
-      # https://github.com/grafana/grafana/pull/27536
-      test: ['CMD', 'curl', '0.0.0.0:3000/healthz']
     labels:
       traefik.enable: true
       traefik.http.routers.grafana.middlewares: 'basic_auth@docker'
@@ -66,9 +60,6 @@ services:
 
   node_exporter:
     image: 'prom/node-exporter:${NODE_EXPORTER_IMAGE_VERSION:-v1.0.1}'
-    healthcheck:
-      test: ['CMD',
-             'wget', '-q', '--spider', '--proxy=off', 'localhost:9100/metrics']
     labels:
       traefik.enable: true
       traefik.http.routers.node_exporter.middlewares: 'basic_auth@docker'
@@ -90,8 +81,6 @@ services:
       - 'alertmanager'
       - 'cadvisor'
       - 'node_exporter'
-    healthcheck:
-      test: ['CMD', 'wget', '-q', '--spider', '--proxy=off', 'localhost:9090']
     labels:
       traefik.enable: true
       traefik.http.routers.prometheus.middlewares: 'basic_auth@docker'
