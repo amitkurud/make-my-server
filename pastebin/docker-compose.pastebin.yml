@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  pastebin:
+    image: 'mkodockx/docker-pastebin:latest'
+    labels:
+      traefik.enable: true
+      traefik.http.routers.pastebin.rule: 'Host(`pastebin.${SITE:-localhost}`)'
+      traefik.http.services.pastebin.loadbalancer.server.port: 80
+    networks:
+      - 'srv'
+    restart: 'always'
