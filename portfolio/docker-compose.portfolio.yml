@@ -8,8 +8,8 @@ services:
       TIME_ZONE: '${TZ:-Europe/Paris}'
     labels:
       traefik.enable: true
-      traefik.http.routers.ciao.rule: 'Host(`${PORTFOLIO_SITE:-localhost}`)'
-      traefik.http.services.ciao.loadbalancer.server.port: 80
+      traefik.http.routers.portfolio.rule: 'Host(`${PORTFOLIO_SITE:-localhost}`)'
+      traefik.http.services.portfolio.loadbalancer.server.port: 80
     networks:
       - 'srv'
     restart: 'always'
