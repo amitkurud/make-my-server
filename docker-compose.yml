@@ -1,0 +1,16 @@
+version: '3.9'
+
+include:
+  - path: 'docker-compose.networks.yml'
+  - path: 'ciao/docker-compose.ciao.yml'
+  - path: 'codimd/docker-compose.codimd.yml'
+#  - path: 'elk/docker-compose.elk.yml'
+  - path: 'grafana/docker-compose.grafana.yml'
+  - path: 'homeassistant/docker-compose.homeassistant.yml'
+  - path: 'kavita/docker-compose.kavita.yml'
+  - path: 'pastebin/docker-compose.pastebin.yml'
+  - path: 'portainer/docker-compose.portainer.yml'
+  - path: 'portfolio/docker-compose.portfolio.yml'
+  - path: 'sharelatex/docker-compose.sharelatex.yml'
+  - path: 'traefik/docker-compose.traefik.yml'
+  - path: 'watchtower/docker-compose.watchtower.yml'
