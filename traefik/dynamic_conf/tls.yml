@@ -1,4 +1,7 @@
 tls:
+  certificates:
+    - certFile: '/certs/cert.pem'
+      keyFile: '/certs/key.key'
   options:
     default:
       cipherSuites:
