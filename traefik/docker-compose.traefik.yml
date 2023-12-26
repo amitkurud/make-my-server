@@ -13,10 +13,10 @@ services:
       - '--entrypoints.web.http.redirections.entrypoint.to=websecure'
       - '--entrypoints.websecure.address=:${TRAEFIK_WEBSECURE_ENTRYPOINT:-443}'
       # Let's Encrypt
-      - '--certificatesresolvers.myresolver.acme.email=${ROOT_EMAIL:-changeme@changeme.org}'
-      - '--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web'
-      - '--certificatesresolvers.myresolver.acme.httpchallenge=true'
-      - '--entrypoints.websecure.http.tls.certresolver=myresolver'
+      #- '--certificatesresolvers.myresolver.acme.email=${ROOT_EMAIL:-changeme@changeme.org}'
+      #- '--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web'
+      #- '--certificatesresolvers.myresolver.acme.httpchallenge=true'
+      #- '--entrypoints.websecure.http.tls.certresolver=myresolver'
       # HTTP/3
       - '--experimental.http3=true'
       - '--entrypoints.websecure.http3'
