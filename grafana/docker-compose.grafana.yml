@@ -89,5 +89,5 @@ services:
     user: '1000:1000'
     volumes:
       - './prometheus/data/:/prometheus'
-      - ''./prometheus/:/etc/prometheus/'
+      - './prometheus/:/etc/prometheus/'
       - './prometheus/rules/:/etc/prometheus/rules'
