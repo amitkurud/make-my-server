@@ -91,6 +91,6 @@ services:
     restart: 'always'
     user: '1000:1000'
     volumes:
-      - './prometheus/data:/prometheus'
+      - './prometheus/data/:/prometheus'
       - './prometheus/prometheus.yml:/etc/prometheus/prometheus.yml'
-      - './prometheus/rules:/etc/prometheus/rules'
+      - './prometheus/rules/:/etc/prometheus/rules'
