@@ -7,6 +7,7 @@ include:
 #  - path: 'elk/docker-compose.elk.yml'
   - path: 'grafana/docker-compose.grafana.yml'
 #  - path: 'homeassistant/docker-compose.homeassistant.yml'
+  - path: 'ittools/docker-compose.ittools.yml'
   - path: 'kavita/docker-compose.kavita.yml'
   - path: 'pastebin/docker-compose.pastebin.yml'
   - path: 'portainer/docker-compose.portainer.yml'
