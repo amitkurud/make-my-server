@@ -2,7 +2,6 @@ version: '3.9'
 
 services:
   it-tools:
-    container_name: it-tools
     image: ghcr.io/corentinth/it-tools:latest
     environment:
       PROMETHEUS_ENABLED: '${TOOLS_PROMETHEUS_ENABLED:-false}'
