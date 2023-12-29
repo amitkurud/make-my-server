@@ -11,7 +11,7 @@ services:
       - 'sharelatex-redis'
     environment:
       REDIS_HOST: 'sharelatex-redis'
-      #SHARELATEX_ADMIN_EMAIL: '${ROOT_EMAIL:-changeme@changeme.org}'
+      SHARELATEX_ADMIN_EMAIL: '${ROOT_EMAIL:-changeme@changeme.org}'
       SHARELATEX_APP_NAME: '${USERNAME} ShareLaTeX'
       # SHARELATEX_HEADER_IMAGE_URL: 'http://somewhere.com/mylogo.png'
       SHARELATEX_MONGO_URL: 'mongodb://sharelatex-mongo/sharelatex'
@@ -22,7 +22,6 @@ services:
       test: ['CMD', 'curl', '0.0.0.0:80']
     labels:
       traefik.enable: true
-      traefik.http.routers.sharelatex.middlewares: 'basic_auth@docker'
       traefik.http.routers.sharelatex.rule: 'Host(`sharelatex.${SITE:-localhost}`)'
       traefik.http.services.sharelatex.loadbalancer.server.port: 80
     networks:
