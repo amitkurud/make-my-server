@@ -17,7 +17,7 @@ services:
       SHARELATEX_MONGO_URL: 'mongodb://sharelatex-mongo/sharelatex'
       SHARELATEX_NAV_TITLE: '${SITE:-localhost} - ShareLaTeX'
       SHARELATEX_REDIS_HOST: 'sharelatex-redis'
-      SHARELATEX_SITE_URL: 'https://latex.${SITE:-localhost}'
+      SHARELATEX_SITE_URL: 'https://sharelatex.${SITE:-localhost}'
     healthcheck:
       test: ['CMD', 'curl', '0.0.0.0:80']
     labels:
