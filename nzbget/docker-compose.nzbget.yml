@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  nzbget:
+    image: lscr.io/linuxserver/nzbget:latest
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+      - UMASK=002
+    labels:
+      traefik.enable: true
+      traefik.http.routers.nzbget.middlewares: 'basic_auth@docker'
+      traefik.http.routers.nzbget.rule: 'Host(`nzbget.${SITE:-localhost}`)'
+      traefik.http.services.nzbget.loadbalancer.server.port: 6789
+    volumes:
+      - './appdata:/config'
+      - './Downloads:/downloads'
+    restart: unless-stopped
