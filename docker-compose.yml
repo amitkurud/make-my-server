@@ -8,7 +8,7 @@ include:
   - path: 'grafana/docker-compose.grafana.yml'
 #  - path: 'homeassistant/docker-compose.homeassistant.yml'
   - path: 'ittools/docker-compose.ittools.yml'
-  - path: 'nzbget/docker-compose.nzbget.yml'
+  - path: 'nzbget/docker-compose.sabnzbd.yml'
   - path: 'kavita/docker-compose.kavita.yml'
   - path: 'pastebin/docker-compose.pastebin.yml'
   - path: 'portainer/docker-compose.portainer.yml'
