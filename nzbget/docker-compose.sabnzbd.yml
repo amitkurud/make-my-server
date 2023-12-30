@@ -3,8 +3,6 @@ services:
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
     environment:
-      - PUID=1000
-      - PGID=1000
       - TZ=Etc/UTC
     volumes:
       - ./config:/config
