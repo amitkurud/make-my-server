@@ -4,7 +4,7 @@ http:
       plugin:
         fail2ban:
           rules:
-            bantime: '3h'
+            bantime: '4h'
             enabled: true
             findtime: '10m'
             maxretry: 1000
