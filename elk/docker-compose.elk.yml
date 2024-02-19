@@ -27,8 +27,6 @@ services:
       traefik.http.services.kibana.loadbalancer.server.port: 5601
     links:
       - 'elasticsearch'
-    networks:
-      - 'srv'
     restart: 'always'
     volumes:
       - './kibana/kibana.yml:/usr/share/kibana/config/kibana.yml'

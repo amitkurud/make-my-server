@@ -5,6 +5,7 @@ include:
   - path: 'ciao/docker-compose.ciao.yml'
   - path: 'codimd/docker-compose.codimd.yml'
 #  - path: 'elk/docker-compose.elk.yml'
+  - path: 'opendashboards/docker-compose.opendash.yml'
   - path: 'grafana/docker-compose.grafana.yml'
 #  - path: 'homeassistant/docker-compose.homeassistant.yml'
   - path: 'ittools/docker-compose.ittools.yml'

@@ -1,0 +1,66 @@
+version: '3.9'
+services:
+  opensearch-node:
+    image: opensearchproject/opensearch:latest
+    container_name: opensearch-node
+    restart: always
+    hostname: opensearch-node
+    environment:
+      - cluster.name=opensearch-single
+      - discovery.type=single-node
+      - node.name=opensearch
+      - bootstrap.memory_lock=true # along with the memlock settings below, disables swapping
+      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g" # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
+      - network.host=0.0.0.0
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536 # maximum number of open files for the OpenSearch user, set to at least 65536 on modern systems
+        hard: 65536
+    volumes:
+      - ./opensearch-data:/usr/share/opensearch/data
+    ports:
+      - 9200:9200
+      - 9600:9600 # required for Performance Analyzer
+    healthcheck:
+      test: curl -sk -u admin:admin https://opensearch-node:9200/_cluster/health > /dev/null || exit 1
+      #      test: ["CMD", "curl -sk -u admin:admin https://10.130.0.3:6200 >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - 'srv'
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:latest
+    container_name: opensearch-dashboards
+    restart: always
+    ports:
+      - 5601:5601
+    expose:
+      - "5601"
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch-node:9200"]' # must be a string with no spaces when specified as an environment variable
+      OPENSEARCH_USERNAME: admin
+      OPENSEARCH_PASSWORD: admin
+      OPENSEARCH_SSL_VERIFICATIONMODE: none
+      PROMETHEUS_ENABLED: '${TOOLS_PROMETHEUS_ENABLED:-false}'
+      TIME_ZONE: '${TZ:-Europe/Paris}'
+    labels:
+      traefik.enable: true
+      traefik.http.routers.ittools.rule: 'Host(`logs.${SITE:-localhost}`)'
+      traefik.http.services.ittools.loadbalancer.server.port: 80
+    networks:
+      - 'srv'
+  logstash:
+    #    image: docker.elastic.co/logstash/logstash:8.2.0
+    image: opensearchproject/logstash-oss-with-opensearch-output-plugin:7.16.3
+    container_name: logstash
+    restart: always
+    volumes:
+      - ./pipeline:/usr/share/logstash/pipeline
+    ports:
+      - 5044:5044
+    networks:
+      - 'srv'
