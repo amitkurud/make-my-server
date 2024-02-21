@@ -52,12 +52,6 @@ services:
 
       traefik.http.routers.traefik.rule: 'Host(`traefik.${SITE:-localhost}`)'
       traefik.http.routers.traefik.service: 'api@internal'
-      traefik.http.routers.traefik-https.service: 'api@internal'
-      traefik.http.routers.traefik-https.rule: 'Host(`traefik.${SITE:-localhost}`)'
-      traefik.http.routers.traefik-https.entrypoints: websecure
-      traefik.http.routers.traefik-https.tls: true
-      traefik.http.routers.traefik-https.certresolver: letsencrypt
-      traefik.http.services.traefik.loadbalancer.server.scheme: http
     networks:
       - 'srv'
     ports:
