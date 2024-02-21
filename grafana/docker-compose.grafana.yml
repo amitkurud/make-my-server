@@ -8,10 +8,6 @@ services:
       traefik.http.routers.alertmanager.middlewares: 'basic_auth@docker'
       traefik.http.routers.alertmanager.rule: 'Host(`alertmanager.${SITE:-localhost}`)'
       traefik.http.services.alertmanager.loadbalancer.server.port: 9093
-      traefik.http.routers.alertmanager-https.rule: 'Host(`alertmanager.${SITE:-localhost}`)'
-      traefik.http.routers.alertmanager-https.entrypoints: websecure
-      traefik.http.routers.alertmanager-https.tls: true
-      traefik.http.routers.alertmanager-https.certresolver: letsencrypt
       traefik.http.services.alertmanager.loadbalancer.server.scheme: http
     networks:
       - 'srv'
@@ -26,10 +22,6 @@ services:
       traefik.http.routers.cadvisor.middlewares: 'basic_auth@docker'
       traefik.http.routers.cadvisor.rule: 'Host(`cadvisor.${SITE:-localhost}`)'
       traefik.http.services.cadvisor.loadbalancer.server.port: 8080
-      traefik.http.routers.cadvisor-https.rule: 'Host(`cadvisor.${SITE:-localhost}`)'
-      traefik.http.routers.cadvisor-https.entrypoints: websecure
-      traefik.http.routers.cadvisor-https.tls: true
-      traefik.http.routers.cadvisor-https.certresolver: letsencrypt
       traefik.http.services.cadvisor.loadbalancer.server.scheme: http
     networks:
       - 'srv'
@@ -60,11 +52,6 @@ services:
       traefik.enable: true
       traefik.http.routers.grafana.middlewares: 'basic_auth@docker'
       traefik.http.routers.grafana.rule: 'Host(`grafana.${SITE:-localhost}`)'
-
-      traefik.http.routers.grafana-https.rule: 'Host(`grafana.${SITE:-localhost}`)'
-      traefik.http.routers.grafana-https.entrypoints: websecure
-      traefik.http.routers.grafana-https.tls: true
-      traefik.http.routers.grafana-https.certresolver: letsencrypt
       traefik.http.services.grafana.loadbalancer.server.scheme: http
       traefik.http.services.grafana.loadbalancer.server.port: 3000
     networks:
@@ -80,10 +67,6 @@ services:
       traefik.http.routers.node_exporter.middlewares: 'basic_auth@docker'
       traefik.http.routers.node_exporter.rule: 'Host(`node_exporter.${SITE:-localhost}`)'
       traefik.http.services.node_exporter.loadbalancer.server.port: 9100
-      traefik.http.routers.node_exporter-https.rule: 'Host(`node_exporter.${SITE:-localhost}`)'
-      traefik.http.routers.node_exporter-https.entrypoints: websecure
-      traefik.http.routers.node_exporter-https.tls: true
-      traefik.http.routers.node_exporter-https.certresolver: letsencrypt
       traefik.http.services.node_exporter.loadbalancer.server.scheme: http
     networks:
       - 'srv'
@@ -104,10 +87,6 @@ services:
       traefik.http.routers.prometheus.middlewares: 'basic_auth@docker'
       traefik.http.routers.prometheus.rule: 'Host(`prometheus.${SITE:-localhost}`)'
       traefik.http.services.prometheus.loadbalancer.server.port: 9090
-      traefik.http.routers.prometheus-https.rule: 'Host(`prometheus.${SITE:-localhost}`)'
-      traefik.http.routers.prometheus-https.entrypoints: websecure
-      traefik.http.routers.prometheus-https.tls: true
-      traefik.http.routers.prometheus-https.certresolver: letsencrypt
       traefik.http.services.prometheus.loadbalancer.server.scheme: http
     networks:
       - 'srv'
