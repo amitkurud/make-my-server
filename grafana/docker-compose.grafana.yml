@@ -80,6 +80,8 @@ services:
       - 'alertmanager'
       - 'cadvisor'
       - 'node_exporter'
+    ports:
+      - 9090:9090
     labels:
       traefik.enable: true
       traefik.http.routers.prometheus.middlewares: 'basic_auth@docker'
