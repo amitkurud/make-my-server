@@ -87,7 +87,6 @@ services:
       traefik.http.routers.prometheus.middlewares: 'basic_auth@docker'
       traefik.http.routers.prometheus.rule: 'Host(`prometheus.${SITE:-localhost}`)'
       traefik.http.services.prometheus.loadbalancer.server.port: 9090
-      traefik.http.services.prometheus.loadbalancer.server.scheme: http
     networks:
       - 'srv'
     restart: 'always'
