@@ -73,7 +73,7 @@ services:
     restart: 'always'
 
   prometheus:
-    image: 'prom/prometheus:${PROMETHEUS_IMAGE_VERSION:-v2.22.0}'
+    image: 'prom/prometheus:${PROMETHEUS_IMAGE_VERSION:-latest}'
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--web.config.file=/etc/prometheus/web.yml'
